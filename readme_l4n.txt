@@ -1,37 +1,15 @@
 ﻿本文档会随版本更新，部分功能会添加进hud菜单里方便使用
 
+[2.57.4]
+修改：l4n_game_usage为2时显示net_graph的sv和var数值
+
 [2.57.3]
 修复：to_l4n_survivor的一些问题
 
 [2.57.2]
 修复：VPK挂载层的旧模型数据残留问题
 
-[2.57.1]
-修改：增加了L4N HUD菜单的对比度
-修复：减小l4nsurvivor随机不重复模式在玩家切换闲置时的卡顿问题
-新增：convar l4n_lookat_only_loop_default
 
-[2.57.0]
-新增：convar l4n_vm_allow_interaction_anim
-新增：convar l4n_vpkoverlay_only_forced
-
-[2.56.2]
-修复：l4n_bonesetup_path的一个IK计算问题
-
-[2.56.1]
-修复：l4n_bonesetup_path计算普感碎片的浮空
-修复：l4n_bonesetup_patch服务端碰撞效果不匹配模型
-修复：l4nsurvivor在近期版本带来的问题
-
-[2.56.0]
-新增：vpk挂载层按战役刷新的选项
-修复：l4n_loading_boost新增了保守模式，防止某些静态道具不可见
-新增：convar l4n_output_loading_time
-
-[2.55.0]
-修改：vpk overlay支持层文件夹分组
-修复：witch实体不能使用player_foot
-新增：convar l4n_loading_boost
 ==== 更多历史更新日志在本文档末尾
 
     
@@ -488,7 +466,7 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
     l4n_tonemap_scale 1,                控制hdr的曝光强度，不支持禁用hdr的地图
     l4n_survivor_stylized_amibentlight 0，幸存者实体使用风格化环境光的开关
     l4n_survivor_lighting_scale 1,        控制幸存者实体的光照倍率
-    l4n_game_usage 0,                   hud显示和引擎稳定性有关的数据(datacache，ents是实体峰值数量，av是游戏进程的可用内存)
+    l4n_game_usage 0,                   hud显示和引擎稳定性有关的数据(datacache，ents是实体峰值数量，av是游戏进程的可用内存)，为2时显示net_graph的sv和var数值
     l4n_game_usage_pos 32，             控制l4n_game_usage显示的位置
     l4n_game_usage_padding 24，         控制l4n_game_usage距屏幕边缘的位置
     l4n_survivor_sequence_strip         是否修复幸存者mod的动画数量，修改后需重启游戏，更多信息查看config_template.vdf
@@ -662,6 +640,33 @@ pcf粒子文件加载:
 
 
 ===========历史更新日志==========
+[2.57.1]
+修改：增加了L4N HUD菜单的对比度
+修复：减小l4nsurvivor随机不重复模式在玩家切换闲置时的卡顿问题
+新增：convar l4n_lookat_only_loop_default
+
+[2.57.0]
+新增：convar l4n_vm_allow_interaction_anim
+新增：convar l4n_vpkoverlay_only_forced
+
+[2.56.2]
+修复：l4n_bonesetup_path的一个IK计算问题
+
+[2.56.1]
+修复：l4n_bonesetup_path计算普感碎片的浮空
+修复：l4n_bonesetup_patch服务端碰撞效果不匹配模型
+修复：l4nsurvivor在近期版本带来的问题
+
+[2.56.0]
+新增：vpk挂载层按战役刷新的选项
+修复：l4n_loading_boost新增了保守模式，防止某些静态道具不可见
+新增：convar l4n_output_loading_time
+
+[2.55.0]
+修改：vpk overlay支持层文件夹分组
+修复：witch实体不能使用player_foot
+新增：convar l4n_loading_boost
+
 [2.54.0]
 新增：VPhysics物理引擎的实验性替代，启动项添加-l4n_vphysics_jolt来启用
 
