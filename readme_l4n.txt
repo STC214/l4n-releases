@@ -1,5 +1,20 @@
 ﻿本文档会随版本更新，部分功能会添加进hud菜单里方便使用
 
+[2.57.3]
+修复：to_l4n_survivor的一些问题
+
+[2.57.2]
+修复：VPK挂载层的旧模型数据残留问题
+
+[2.57.1]
+修改：增加了L4N HUD菜单的对比度
+修复：减小l4nsurvivor随机不重复模式在玩家切换闲置时的卡顿问题
+新增：convar l4n_lookat_only_loop_default
+
+[2.57.0]
+新增：convar l4n_vm_allow_interaction_anim
+新增：convar l4n_vpkoverlay_only_forced
+
 [2.56.2]
 修复：l4n_bonesetup_path的一个IK计算问题
 
@@ -139,9 +154,13 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
         该bug貌似和w模的形状和体积有关(注意这里说的不是碰撞体模型)
         貌似还有另一种因素会导致同样的闪退
 
-    进图后突然退回到大厅：
-        检查音频脚本的数量是否过多，通常在安装过多社区称为“音频库”的mod过多时发生
-        控制台会输出：Host_Error: CEngineSoundServer::PrecacheSound...overflow
+    加载地图时突然退回到大厅：
+        情况1
+            检查音频脚本的数量是否过多，通常在安装过多社区称为“音频库”的mod过多时发生
+            控制台会输出：Host_Error: CEngineSoundServer::PrecacheSound...overflow
+        情况2
+            CMapLoadHelper::Init, unable to open maps/xxx.bsp
+            如果能够确定有安装对应的地图mod，可能是missions文件里的Name与服务器的不匹配所致
 
     Too many xx for xx buffer引擎错误弹窗：
         这和单帧里突然出现的几何体数量有关，尤其是生成贴花时会复制网格(如果贴花目标表面的面数很大)
@@ -303,6 +322,7 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
     能够在每次加载地图时，自动从备选库中为你随机、顺序挑选或指定挂载不同的VPK模组，无需重启游戏
     例如：每次换地图自动换一把不同皮肤的枪，或切换不同的幸存者模型
     cvar l4n_vpkoverlay     启用或者禁用
+    cvar l4n_vpkoverlay_only_forced 是否只加载!force文件夹的vpk
     更多信息在config_template.vdf里
 
 ======== 接管骨骼变换计算(实验性) ========
@@ -411,9 +431,11 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
     触发物品伸手动画的绑定：bind v "+l4n_lookat itempickup"
     触发队友伸手动画的绑定：bind v "+l4n_lookat helpinghand"
     触发Fidget动画的绑定：bind v "+l4n_lookat fidget"
-    随机触发两种动画的绑定：bind v "+l4n_lookat"
+    随机触发三种动画的绑定：bind v "+l4n_lookat"
     循环动画默认只播放一次，长按则保持播放循环动画
     mdl可添加备注来提高使用体验(详见mdl_extension.qc)
+    可以在hud菜单里配置里单独给模型配置触发方式，以下是菜单功能的对应concmd/convar
+    convar l4n_lookat_only_loop_default, 是否默认忽略进入/退出动画
     concmd l4n_lookat_vmconfig的参数信息
         itempickup_onlyloop     0或1, -1切换
         helpinghand_onlyloop    0或1, -1切换
@@ -537,6 +559,7 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
     l4n_bonesetup_force_threaded                是否使用多线程骨骼变换计算
     l4n_loading_boost                           是否在地图加载阶段使用多线程，1保守，2激进
     l4n_output_loading_time                     输出地图加载耗时
+    l4n_vm_allow_interaction_anim               是否允许游戏触发伸手动画
 【ConCommand】
     l4n_vm_offset2 [x/dx/y/dy/z/dz/reset] [value], 为当前使用的v模设置位置偏移，带d的是增量；参数reset归零xyz
     l4n_menu                                显示l4n主菜单
