@@ -1,32 +1,13 @@
 ﻿本文档会随版本更新，部分功能会添加进hud菜单里方便使用
 
-[2.57.4]
-修改：l4n_game_usage为2时显示net_graph的sv和var数值
-
-[2.57.3]
-修复：to_l4n_survivor的一些问题
-
-[2.57.2]
-修复：VPK挂载层的旧模型数据残留问题
-
-
+[2.58.0] 2026-11-09
+修改：nekotoon默认不再减弱环境光亮度的影响
+修改：nekoton默认启用秦始皇度亮衡
+新增：convar mat_nekotoon_lambert_factor
+修复：一些角色模型不显示缩放选项
+新增：convar l4n_vpkoverlay_default_update_time
+新增：concmd l4n_save_model_config
 ==== 更多历史更新日志在本文档末尾
-
-    
-======== 待办清单 ========
-    有一部分还处在可行性验证阶段
-    基于l4n_bonesetup_patch：
-        修复原生Jiggle飘骨算法的一些鬼畜BUG
-        使网络同步的角色布娃娃能够应用pps(骨架比例修正动画/Proportiontrick)
-        l4n player_foot介入IK计算
-        提供更多程序骨算法
-        提供另一套更现代的飘动骨骼方案/算法，支持碰撞模拟，以及高可视化、高易用性的参数调整体验
-        扩展原生Jiggle飘骨的功能，如增加碰撞体支持
-        提供一套后处理绑定/或算法来修正因动画制作水平导致的第一人称手模变形
-        提供一种机制，根据某些模型部件的隐藏来跳过对应的骨骼计算
-        现已提供了：
-            l4n_prevent_varms_stretching，禁止动画修改手指比例
-            l4n_vm_dual_quaternion_skinning，手模使用对偶四元数蒙皮算法，或许能缓解手臂扭转失去过多体积的问题(目前仅支持NekoToon材质)
 
 
 免责声明
@@ -572,6 +553,7 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
     l4n_reload_config
     l4n_analyze_dumps
     l4n_show_addon_load_order               输出utf8格式的VPK挂载信息，输出内容代表文件系统实际能够读取到的内容，可以提交给外部工具进行冲突检测
+    l4n_save_model_config                   立即保存模型配置
 【NekoShaders】
     mat_outline_thickness_scale 1.0     描边粗细倍率，0则关闭描边
     mat_pbr_where 0                     设置1则高亮闪烁PBR材质，用于查找哪些材质使用了PBR着色器
@@ -591,6 +573,7 @@ l4n能对部分引擎bug进行修复，其它已知bug因为触发条件低等�
         mat_nekotoon_lazy_texture_load 0    是否在渲染时才加载对应材质的贴图
         mat_nekotoon_ignore_flat_normal 1   是否禁止使用"flat_normal"以提升性能，数值2则更严格
         mat_nekotoon_normalized_lightwarp   统一lightwarp的最大亮度，可用于解决不同mod作者间光照标准不统一的问题
+        mat_nekotoon_lambert_factor         环境光强度
     neko_engine_post:
         mat_neko_tonemapping_algorithm 6    ToneMapping曲线(0:Linear/1:Reinhard/2:Filmic(神秘海域2)/3:CE(CryEngine2)/4:ACES(UE4默认)/5:GranTurismo/6:Neutral(Unity)/7:NAES/8:LOG2(终末地)/9:AgX)，需添加-l4n_use_neko_engine_post启动项才能使用
         mat_neko_tonemapping_force_linear 0 强制使用linear tonemapping，用于调试
@@ -640,6 +623,15 @@ pcf粒子文件加载:
 
 
 ===========历史更新日志==========
+[2.57.4]
+修改：l4n_game_usage为2时显示net_graph的sv和var数值
+
+[2.57.3]
+修复：to_l4n_survivor的一些问题
+
+[2.57.2]
+修复：VPK挂载层的旧模型数据残留问题
+
 [2.57.1]
 修改：增加了L4N HUD菜单的对比度
 修复：减小l4nsurvivor随机不重复模式在玩家切换闲置时的卡顿问题

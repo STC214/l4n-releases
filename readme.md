@@ -37,11 +37,14 @@
 
 ## 版本归档与命名
 
-截至 **2026-11-09**，已归档 **189 个版本**，覆盖 **0.4.1 ～ 2.57.4**；当前最新归档版本为 **[2.57.4](https://github.com/STC214/l4n-releases/releases/tag/L4N_v2.57.4)**。后续版本以 [Releases 页面](https://github.com/STC214/l4n-releases/releases) 为准。
+截至 **2026-11-13**，已归档 **190 个版本**，覆盖 **0.4.1 ～ 2.58.0**；当前最新归档版本为 **[2.58.0](https://github.com/STC214/l4n-releases/releases/tag/L4N_v2.58.0)**。后续版本以 [Releases 页面](https://github.com/STC214/l4n-releases/releases) 为准。
 
-### 最新更新 · 2.57.4
+### 最新更新 · 2.58.0
 
-- 当 `l4n_game_usage` 为 `2` 时，显示 `net_graph` 的 `sv` 和 `var` 数值。
+- 调整 NekoToon 的默认光照行为，默认不再减弱环境光亮度的影响。
+- 修复部分角色模型不显示缩放选项的问题。
+- 新增变量 `mat_nekotoon_lambert_factor`、`l4n_vpkoverlay_default_update_time`。
+- 新增命令 `l4n_save_model_config`。
 - 以上摘自该版本压缩包内的原版更新日志；完整内容见 [`readme_l4n.txt`](readme_l4n.txt)。
 
 ### 版本命名规则
@@ -53,7 +56,7 @@
 | `0.4.1` | `L4N_v0.04.1` | `L4N_v0.4.1.7z` |
 | `1.5.2` | `L4N_v1.05.2` | `L4N_v1.5.2.zip` |
 | `2.8.3` | `L4N_v2.08.3` | `L4N_v2.8.3.7z` |
-| `2.57.4` | `L4N_v2.57.4` | `L4N_v2.57.4.7z` |
+| `2.58.0` | `L4N_v2.58.0` | `L4N_v2.58.0.7z` |
 
 - **仅规范标签与标题**：原始附件名称、格式与内容均保持不变，描述留空。
 - **标签不等于附件名**：接入部署工具时，请读取 Release 的 Assets，避免直接将标签拼接为压缩包名称。
